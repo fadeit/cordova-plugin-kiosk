@@ -28,7 +28,7 @@ public class HomeActivity extends Activity {
                 HomeActivity.this.startKioskActivity();
             }
         });
-        button.setBackgroundColor(getResources().getColor(R.color.red));
+        button.setBackgroundColor(0x00FF00);
         layout.addView(button, params);
         
         setContentView(layout);
