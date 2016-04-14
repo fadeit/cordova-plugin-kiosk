@@ -22,12 +22,13 @@ public class HomeActivity extends Activity {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         
         Button button = new Button(this);
-        button.setText("Click or press any key to begin...");
+        button.setText("Loading...");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 HomeActivity.this.startKioskActivity();
             }
         });
+        button.setBackgroundColor(getResources().getColor(R.color.red));
         layout.addView(button, params);
         
         setContentView(layout);
@@ -41,7 +42,7 @@ public class HomeActivity extends Activity {
             public void run() {
                 HomeActivity.this.startKioskActivity();
             }
-        }, 20000); // 20 seconds
+        }, 10000); // 10 seconds
     }
     
     @Override
