@@ -12,10 +12,12 @@ import android.view.KeyEvent;
 import android.view.ViewGroup.LayoutParams;
 import java.util.Timer;
 import java.util.TimerTask;
+import android.util.Log;
 
 public class KioskActivity extends CordovaActivity {
     
     public static boolean running = false;
+    private final static String TAG = KioskActivity.class.getSimpleName();
     
     protected void onStart() {
         super.onStart();
@@ -58,6 +60,18 @@ public class KioskActivity extends CordovaActivity {
                     sendBroadcast(closeDialog);
                 }
             }, 500); // 0.5 second
+        }
+    }
+
+    @Override
+    public void onReceivedError(final int errorCode, final String description, final String failingUrl) {
+        // For some reason cordova may display error popup even when application is running fine. We hide the popup on release builds
+        if (dk.fadeit.play.BuildConfig.DEBUG){
+            Log.e(TAG, "Received error in DEBUG mode, delegating to super...");
+            super.onReceivedError(errorCode, description, failingUrl);
+        }
+        else{
+            Log.e(TAG, "Received error with code: " + errorCode + " description: " + description + "URL: " + failingUrl);
         }
     }
 }
