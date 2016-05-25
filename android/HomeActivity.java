@@ -42,7 +42,7 @@ public class HomeActivity extends Activity {
             public void run() {
                 HomeActivity.this.startKioskActivity();
             }
-        }, 10000); // 10 seconds
+        }, 15000); // 15 seconds
     }
     
     @Override
